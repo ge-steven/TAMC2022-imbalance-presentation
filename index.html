@@ -1,0 +1,1493 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+
+  <title>Imbalance - intermediate presentation</title>
+
+  <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+  <meta name="author" content="Hakim El Hattab">
+
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="libs/reveal.js/4.3.1/reset.css">
+  <link rel="stylesheet" href="libs/reveal.js/4.3.1/reveal.css">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+  <!-- highlight Theme -->
+  
+  <link rel="stylesheet" href="libs/highlight.js/11.3.1/styles/monokai.min.css">
+  
+	
+		
+	<link rel="stylesheet" href="libs/reveal.js/4.3.1/plugin/chalkboard/style.css">
+	
+	
+	
+  <link rel="stylesheet" href="libs/reveal.js/4.3.1/plugin/customcontrols/style.css">
+  
+	
+
+
+
+  <!-- Revealjs Theme -->
+  
+  <link rel="stylesheet" href="libs/reveal.js/4.3.1/theme/simple.css" id="theme">
+  
+  
+
+  <link rel="stylesheet" href="libs/styles/tasklist.css">
+	<link rel="stylesheet" href="libs/styles/iota.css">
+	<link rel="stylesheet" href="libs/styles/layout.css">
+
+
+  <!-- Revealjs Theme -->
+  
+  <link rel="stylesheet" href="reveal-override.css">
+  
+
+   <!-- css list -->
+	
+
+   
+
+</head>
+
+<body>
+
+   
+    <div id="logo" style="position: fixed; top: 20px; left: 20px; z-index: 1; height:3rem;">
+        <img src="images/logo.svg" style="height:100%"/>
+    </div>
+
+
+  <div class="reveal">
+
+    <!-- Any section element inside of this container is displayed as a slide -->
+    <div class="slides">
+
+      
+
+
+    
+        <section >
+            
+            <div class="block">
+ <h3 style="text-align: center;">Characterization of the Imbalance Problem on Complete Bipartite Graphs</h3>
+</div>
+<section>
+  <img width="48%" height="48%" data-src="images/scale.svg">
+  <h3 style="text-align: center;">Steven Ge and Toshiya Itoh</h3>
+  <div style="text-align: center" id="coverpage-bottom">Tokyo Institute of Technology<br>Department of Mathematical and Computing Science</div>
+</section>
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h3>Content</h3>
+<section>
+<ul>
+<li>Preliminary
+<ul>
+<li>Imbalance Problem description</li>
+<li>Practical applications: Graph drawing</li>
+</ul>
+</li>
+<li>Results
+<ul>
+<li>Complete Bipartite Graph</li>
+<li>Chained Complete Bipartite Graph</li>
+</ul>
+</li>
+<li>Future work</li>
+</ul>
+</section>
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h3>Imbalance Problem description [1]</h3>
+<!-- ----------------------------------imbalance description---------------------------- -->
+  <!-- graph 1 -->
+  <section class="graph-section" id="graph1">
+    <h5>Definitions</h5>
+    <div style="width: 100%; display: table;">
+      <div style="width: 49%; float: left;font-size: 0.65em;"> 
+        <ul>
+          <li data-fragment-index="0" class="fragment">
+          Let $G$ be a graph.
+          </li>
+          <li data-fragment-index="2"class="fragment">
+          Let $\pi$ be a permutation $\pi : V(G) \rightarrow \{1, 2, \dots, n\}$.
+          </li>
+          <li data-fragment-index="4"class="fragment">
+          For $v \in V(G)$, let $N_<(v, \pi) = \{u ~|~ \{u,v\} \in E(G) \wedge \pi(u) < \pi(v)\}$.
+          </li>
+          <li data-fragment-index="7"class="fragment">
+          For $v \in V(G)$, let $N_>(v, \pi) = \{u ~|~ \{u,v\} \in E(G) \wedge \pi(u) > \pi(v)\}$.
+          </li>
+          <li data-fragment-index="9"class="fragment">
+          For $v \in V(G)$, we define imbalance $$I(v, \pi) = ||N_<(v, \pi)| − |N_>(v, \pi)||.$$
+          </li>
+          <li data-fragment-index="12"class="fragment">
+          For $\pi : V(G) \rightarrow \{1, 2, \dots, n\}$, we define imbalance $$I(\pi) = \sum_{v \in V(G)}I(v, \pi).$$
+          </li>
+          <li data-fragment-index="17"class="fragment" id="graph71-cy">
+          For graph $G$, we define imbalance $$I(G) = \min_{\pi : V(G) \rightarrow \{1, 2, \dots, n\}}I(\pi).$$
+          </li>
+        </ul>
+      </div>
+      <div data-fragment-index="1" style="margin-left: 50%;width:49%" id="graph1-cy" class="fragment graph"></div>
+    </div>
+    <div style="font-size: 0.7em;">
+      <div>
+        <div style="margin-left: 50%;" data-fragment-index="11" class="fragment">
+          <span data-fragment-index="12" class="fragment fade-out">
+          $I(k, \pi) = |4-1| = 3$
+          </span>  
+        </div>
+        <div style="margin-left: 49%" data-fragment-index="13" class="fragment" id="graph62-cy">
+          <span data-fragment-index="17" class="fragment fade-out">
+            $I(\pi) = |0-2|$
+            <span data-fragment-index="14" class="fragment" id="graph63-cy">$+|0-3|$</span>
+            <span data-fragment-index="15" class="fragment" id="graph64-cy">$+|1-5|$</span>
+            <span data-fragment-index="16" class="fragment" id="graph65-cy">$+...+|3-0|=24$</span>
+          </span>  
+        </div>  
+        <div data-fragment-index="18" class="fragment" style="margin-left: 70%" id="graph72-cy">
+          $I(\pi_1) = 36$
+        </div>
+      </div>
+    </div>
+    <div data-fragment-index="3" class="fragment" id="graph22-cy"></div>
+    <div data-fragment-index="5" class="fragment" id="graph32-cy"></div>
+    <div data-fragment-index="6" class="fragment" id="graph33-cy"></div>
+    <div data-fragment-index="8" class="fragment" id="graph42-cy"></div>
+    <div data-fragment-index="10" class="fragment" id="graph52-cy"></div>
+    <div data-fragment-index="19" class="fragment" id="graph82-cy"></div>
+  </section>
+  <section class="graph-section" >
+    <h5>Definitions</h5>
+      <div>
+        \[\begin{aligned} \textbf{Instance: } &amp; \text{A graph } G \text{ and a positive integer } m.\\
+        \textbf{Question: } &amp; \text{Does } G \text{ have imbalance at most } m \text{?}\\
+        \color{white}{\textbf{Parameter: }} &amp; \color{white}{m, n} 
+        \end{aligned}\]
+      </div>
+  </section> 
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h3>Practical applications: Graph drawing</h3>
+<!-- -----------------------------------bends------------------------------------- -->
+<section class="graph-section">
+  <div style="text-align: center">Minimizing edge bends in 3-D orthogonal graph drawings [7]</div>
+  <div style="width: 49%; float: left;font-size: 0.65em;">
+    <img style="height: 20em; width: auto;" data-src="images/3D-integrated-systems_pavlidis.jpg">
+    <div style="text-align: center; font-size:1em;">Source: "Three-Dimensional (3-D) Integrated Systems" by Vasileios F. Pavlidis</div>
+  </div>
+  <div width=50% style="margin-left: 50%;">
+    <img style="height: 15em; width: auto;" data-src="images/rpi.jpg">
+  </div>
+</section>
+            </section>
+    
+
+
+
+    
+    <section>
+        <section >
+            <h3>Results - Existing</h3>
+<div style="text-align: center">Imbalance complexity results</div>
+<table>
+<thead>
+<tr>
+<th>Graph Class</th>
+<th>Complexity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="fragment" data-fragment-index="0">Split graph</span></td>
+<td><span class="fragment" data-fragment-index="0">NP-complete [4]</span></td>
+</tr>
+<tr>
+<td><span class="fragment" data-fragment-index="0">Bipartite graph &amp; $\Delta(G) \leq 6$</span></td>
+<td><span class="fragment" data-fragment-index="0">NP-complete [1]</span></td>
+</tr>
+<tr>
+<td><span class="fragment" data-fragment-index="0">Weighted tree</span></td>
+<td><span class="fragment" data-fragment-index="0">NP-complete [1]</span></td>
+</tr>
+<tr>
+<td><span class="fragment" data-fragment-index="0">$\Delta(G) \leq 4$</span></td>
+<td><span class="fragment" data-fragment-index="0">NP-complete [6]</span>⠀</td>
+</tr>
+<tr>
+<td><span class="fragment" data-fragment-index="1">Superfragile graph</span></td>
+<td><span class="fragment" data-fragment-index="1">P [4]</span></td>
+</tr>
+<tr>
+<td><span class="fragment" data-fragment-index="1">Threshold graph</span></td>
+<td><span class="fragment" data-fragment-index="1">P [3]</span></td>
+</tr>
+<tr>
+<td><span class="fragment" data-fragment-index="1">Proper interval graph</span></td>
+<td><span class="fragment" data-fragment-index="1">P [4]</span></td>
+</tr>
+<tr>
+<td><span class="fragment" data-fragment-index="1">Bipartite permutation graph</span></td>
+<td><span class="fragment" data-fragment-index="1">P [3]</span></td>
+</tr>
+</tbody>
+</table>
+
+            </section>
+        
+            <section >
+                <h3>Results - Existing</h3>
+<div style="text-align: center">Imbalance complexity results</div>
+<table>
+<thead>
+<tr>
+<th>Graph Class</th>
+<th>Complexity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Split graph</td>
+<td>NP-complete [4]</td>
+</tr>
+<tr>
+<td>Bipartite graph &amp; $\Delta(G) \leq 6$</td>
+<td>NP-complete [1]</td>
+</tr>
+<tr>
+<td>Weighted tree</td>
+<td>NP-complete [1]</td>
+</tr>
+<tr>
+<td>$\Delta(G) \leq 4$</td>
+<td>NP-complete [6]⠀</td>
+</tr>
+<tr>
+<td>Superfragile graph</td>
+<td>P [4]</td>
+</tr>
+<tr>
+<td>Threshold graph</td>
+<td>P [3]</td>
+</tr>
+<tr>
+<td>Proper interval graph</td>
+<td>P [4]</td>
+</tr>
+<tr>
+<td><span style="color:red">Bipartite permutation graph</span></td>
+<td><span style="color:red">P [3]</span></td>
+</tr>
+</tbody>
+</table>
+
+            </section>
+        
+
+    </section>
+    
+
+
+
+    
+    <section>
+        <section >
+            <h3>Results - Novel</h3>
+<div style="text-align: center">Imbalance complexity results</div>
+<table>
+<thead>
+<tr>
+<th>Condition/Graph Class</th>
+<th>Time Complexity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span>Bipartite permutation graph</span></td>
+<td><span>$\mathcal{O}(|V| + |E|)$ [3]</span></td>
+</tr>
+<tr>
+<td><span class="fragment" data-fragment-index="1">Complete bipartite graph</span></td>
+<td><span class="fragment" data-fragment-index="1">$\mathcal{O}(|V| + |E|)$ [3]</span></td>
+</tr>
+<tr>
+<td><span style="color:white">Chained complete bipartite graph</span></td>
+<td><span style="color:white">$\mathcal{O}(c \cdot \log(|V|) \cdot \log(\log(|V|)))$</span></td>
+</tr>
+</tbody>
+</table>
+
+            </section>
+        
+            <section >
+                <h3>Results - Novel</h3>
+<div style="text-align: center">Imbalance complexity results</div>
+<table>
+<thead>
+<tr>
+<th>Condition/Graph Class</th>
+<th>Time Complexity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bipartite permutation graph</td>
+<td>$\mathcal{O}(|V| + |E|)$ [3]</td>
+</tr>
+<tr>
+<td>Complete bipartite graph</td>
+<td><span  style="color:red">$\mathcal{O}(\log(|V|) \cdot \log(\log(|V|)))$</span></td>
+</tr>
+<tr>
+<td><span class="fragment">Chained complete bipartite graph</span></td>
+<td><span class="fragment" style="color:red">$\mathcal{O}(c \cdot \log(|V|) \cdot \log(\log(|V|)))$</span></td>
+</tr>
+</tbody>
+</table>
+<div class="fragment">where $c = \mathcal{O}( | V | )$.</div>
+            </section>
+        
+
+    </section>
+    
+
+
+
+    
+        <section >
+            
+            <h3>Results - Complete Bipartite Graph</h3>
+<section class="graph-section">
+  <div>
+    <div data-fragment-index="0" class="fragment" style="text-align: center"><b>Theorem 1</b></div>
+    <div>
+      <div data-fragment-index="1" class="fragment">Let $G = ({\color{#ff0000}X},{\color{#006cff}Y},E)$ be a complete bipartite graph<span data-fragment-index="2" class="fragment">, then</span></div>
+      <div data-fragment-index="2" class="fragment">$$I(G) = |{\color{#ff0000}X}| \cdot |{\color{#006cff}Y}| + (|{\color{#ff0000}X}| \mod 2) \cdot (|{\color{#006cff}Y}| \mod 2).$$</div>
+    </div>
+  </div>
+</section>
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <!-- Lemma 1 sandwich -->
+<h3>Results - Complete Bipartite Graph</h3>
+<!-- even even sandwich -->
+<section class="graph-section"  id="comp-bigraph1">
+  <div>
+    <div style="text-align: center"><b>Lemma 1</b></div>
+    <div data-fragment-index="0" class="fragment">
+      Let $G = ({\color{#ff0000}X},{\color{#006cff}Y},E)$ be a complete bipartite graph<span data-fragment-index="1" class="fragment">, then there exists an ordering $\sigma$ such that</span>
+      <span data-fragment-index="2" class="fragment">
+        $$I(\sigma) = |{\color{#ff0000}X}| \cdot |{\color{#006cff}Y}| + (|{\color{#ff0000}X}| \mod 2) \cdot (|{\color{#006cff}Y}| \mod 2).$$
+      </span>
+    </div>
+    <div data-fragment-index="3" class="fragment" style="text-align: center"><b>Proof</b></div>
+    <div data-fragment-index="4" class="fragment">Case: $|{\color{#ff0000}X}|$ even or $|{\color{#006cff}Y}|$ even</div>
+    <div  id="comp-bigraph1-1" style="margin-left: 0%; width: 10% !important; float:left; height: 3em; line-height: 7em;" data-fragment-index="6" class="fragment">
+      $\sigma_{sw} =$
+    </div>
+    <div style="width: 75% !important;" id="comp-bigraph1-cy" class="fragment graph halfheight" data-fragment-index="5">
+    </div>
+    <div style="margin-left: 15%; height: 10%; width: 100% !important;" data-fragment-index="7" class="fragment">
+      <span data-fragment-index="8" class="fragment">$\underbrace{~~~~~~~~~~~~~~~}_{I(v) = |{\color{#006cff}Y}|}$</span>
+      $\underbrace{~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~}_{I(v) = 0}$
+      <span data-fragment-index="8" class="fragment">$\underbrace{~~~~~~~~~~~~~~~}_{I(v) = |{\color{#006cff}Y}|}$</span>
+    </div>
+    <div style="margin-left: 0%; height: 20%; text-align:center" data-fragment-index="9" class="fragment">$I(\sigma_{sw}) = |{\color{#ff0000}X}| \cdot |{\color{#006cff}Y}|$</div>
+  </div>
+</section>
+<!--  -->
+<section class="graph-section">
+  <div style="text-align: center"><b>Lemma 1</b></div>
+  <div>
+    Let $G = ({\color{#ff0000}X},{\color{#006cff}Y},E)$ be a complete bipartite graph<span>, then there exists an ordering $\sigma$ such that</span>
+  </div>
+  <div>
+    $$I(\sigma) = |{\color{#ff0000}X}| \cdot |{\color{#006cff}Y}| + (|{\color{#ff0000}X}| \mod 2) \cdot (|{\color{#006cff}Y}| \mod 2).$$
+  </div>
+  <div style="text-align: right">
+    $\square$
+  </div>
+  <div class="fragment">
+    We call $\sigma_{sw}$ a sandwiched ordering.
+  </div>
+</section>
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h3>Results - Complete Bipartite Graph</h3>
+<section class="graph-section"  id="comp-bigraph3-1">
+  <div style="text-align: center"><b>Definition 2</b></div>
+  <div data-fragment-index="0" class="fragment">
+   Let $G = ({\color{#ff0000}X},{\color{#006cff}Y},E)$ be a complete bipartite graph<span data-fragment-index="1" class="fragment"> and $\sigma$ be an ordering.</span>
+  </div>
+  <br>
+  <div>
+    <div data-fragment-index="2" class="fragment">Function $shift_L(\sigma) = \sigma'$.</div>
+    <div data-fragment-index="3" class="fragment">Shift vertex ${\color{#006cff}y}_{\left\lfloor \frac{|{\color{#006cff}Y}|}{2} \right\rfloor}$ to the left most position.</div>
+  </div>
+  <div>
+  <div style="width: 75% !important;" id="comp-bigraph3-1-cy" class=" fragment graph halfheight" data-fragment-index="4"></div>
+  <div id="comp-bigraph3-1" class="fragment" data-fragment-index="5"></div>
+</section>
+<section class="graph-section" id="comp-bigraph3-2">
+  <div style="text-align: center"><b>Definition 2</b></div>
+  <div>
+   Let $G = ({\color{#ff0000}X},{\color{#006cff}Y},E)$ be a complete bipartite graph<span> and $\sigma$ be an ordering.</span>
+  </div>
+  <br>
+  <div>
+    <div>Function $shift_R(\sigma) = \sigma'$.</div>
+    <div>Shift vertex ${\color{#006cff}y}_{\left\lceil \frac{|{\color{#006cff}Y} |}{2} \right\rceil + 1}$ to the right most position.</div>
+  </div>
+  <div>
+  <div style="margin-left:10.65%;width: 75% !important;" id="comp-bigraph3-2-cy" class="graph halfheight"></div>
+  <div id="comp-bigraph3-2" class="fragment" data-fragment-index="0"></div>
+  <!-- <div id="comp-bigraph3-3" class="fragment" data-fragment-index="1"></div> -->
+  <!-- <div class="fragment" data-fragment-index="2">Sandwiched outcome!</div> -->
+</section>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h3>Results - Complete Bipartite Graph</h3>
+<section class="graph-section"  id="comp-bigraph4">
+  <div style="text-align: center"><b>Lemma 2</b></div>
+  <div data-fragment-index="0" class="fragment">
+   Let $G = ({\color{#ff0000}X},{\color{#006cff}Y},E)$ be a complete bipartite graph
+   <span data-fragment-index="1" class="fragment">, <br>$\sigma$ be an imbalance optimal ordering</span>
+   <span data-fragment-index="2" class="fragment">, and <br><span  style="color:purple">$shift_L(\sigma) = \sigma'$</span>.</span>
+  </div>
+  <div data-fragment-index="3" class="fragment">$$I(\sigma) = I(\sigma')$$</div>
+  <div data-fragment-index="4" class="fragment" style="text-align: center;"><b>Lemma 3</b></div>
+  <div data-fragment-index="5" class="fragment">
+   Let $G = ({\color{#ff0000}X},{\color{#006cff}Y},E)$ be a complete bipartite graph
+   <span data-fragment-index="6" class="fragment">, <br>$\sigma$ be an imbalance optimal ordering</span>
+   <span data-fragment-index="7" class="fragment">, and <br><span style="color:purple">$shift_R(\sigma) = \sigma'$</span>.</span>
+  </div>
+  <div data-fragment-index="8" class="fragment">$$I(\sigma) = I(\sigma')$$</div>
+</section>
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h3>Results - Complete Bipartite Graph</h3>
+<section class="graph-section">
+  <div style="text-align: center;"><b>Theorem 1</b></div>
+    <div>
+      <div>Let $G = ({\color{#ff0000}X},{\color{#006cff}Y},E)$ be a complete bipartite graph<span>, then</span></div>
+      <div>$$I(G) = |{\color{#ff0000}X}| \cdot |{\color{#006cff}Y}| + (|{\color{#ff0000}X}| \mod 2) \cdot (|{\color{#006cff}Y}| \mod 2).$$</div>
+    </div>
+  <div style="text-align: center;"><b>Proof</b></div>
+  <div style="text-align: center;" class="fragment" data-fragment-index="0">Follows from Lemma 1 + Lemma 2 + Lemma 3</div>
+  <div id="comp-bigraph6-7-cy" class="fragment" data-fragment-index="11" style="margin-left: 0%; width: 10% !important; float:left; height: 1em; line-height: 7em;">
+    $\sigma_{sw} =$
+  </div>
+  <div style="width: 75% !important;" id="comp-bigraph6-cy" class="fragment graph halfheight" data-fragment-index="1"></div>
+  <div id="comp-bigraph6-1-cy" class="fragment" data-fragment-index="5"></div>
+  <div id="comp-bigraph6-2-cy" class="fragment" data-fragment-index="6"></div>
+  <div id="comp-bigraph6-3-cy" class="fragment" data-fragment-index="7"></div>
+  <div id="comp-bigraph6-4-cy" class="fragment" data-fragment-index="8"></div>
+  <div id="comp-bigraph6-5-cy" class="fragment" data-fragment-index="9"></div>
+  <div id="comp-bigraph6-6-cy" class="fragment" data-fragment-index="10"></div>
+  <div ></div>
+  <br>
+  <div style="text-align: center;" class="fragment" data-fragment-index="12">Sandwiched ordering is optimal!</div>
+  <div class="fragment" data-fragment-index="13" style="text-align: right">
+    $\square$
+  </div>
+</section>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h3>Results - Complete Bipartite Graph</h3>
+<section class="graph-section">
+  <div style="text-align: center;"><b>Corollary 1</b></div>
+  <div class="fragment">Let $G = ({\color{#ff0000}X},{\color{#006cff}Y},E)$ be a complete bipartite graph<span class="fragment">, then using Lemma 1 and Lemma 2, we can determine in $\mathcal{O}(|{\color{#ff0000}X}| + |{\color{#006cff}Y}|)$ time</span><span class="fragment"> whether any arbitrary ordering is imbalance optimal.</span></div>
+  <br>
+  <div  class="fragment" style="text-align: center;"><b>Corollary 2</b></div>
+  <div class="fragment">Let $G = ({\color{#ff0000}X},{\color{#006cff}Y},E)$ be a complete bipartite graph<span class="fragment">, then given $|{\color{#ff0000}X}|$ and $|{\color{#006cff}Y}|$</span><span class="fragment"> using Theorem 1 and Harvey D. et. al. [5]</span><span class="fragment">, we can compute $I(G)$</span><span class="fragment"> in $\mathcal{O}(\log(|V|)\cdot \log(\log(|V|)))$ time, where $|V| = |{\color{#ff0000}X}| + |{\color{#006cff}Y}|$.</span></div>
+</section>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h3>Results - Chained Complete Bipartite Graph</h3>
+<!-- Def 3 -->
+<section class="graph-section">
+  <div style="margin-left: 25%;" id="chained-comp-bigraph1-cy" class="fragment graph quarterheight" data-fragment-index="0">
+  </div>
+  <div style="margin-left:20%">
+    <span data-fragment-index="12" class="fragment" style="margin-right:5%">$\mathscr{C}=\{$</span>
+    <span id="chained-comp-bigraph1-1" data-fragment-index="1" class="fragment"><span style="color:red">$C_1$</span>$,$</span>
+    <span id="chained-comp-bigraph1-2" data-fragment-index="2" class="fragment" style="margin-left:15%;"><span style="color:green">$C_2$</span>$,$</span>
+    <span id="chained-comp-bigraph1-3" data-fragment-index="3" class="fragment" style="margin-left:10%;color:blue">$C_3$</span>
+    <span data-fragment-index="12" class="fragment">$\}$</span>
+  </div>
+  <div class="fragment" data-fragment-index="4" style="text-align: center"><b>Definition 3</b></div>
+  <div data-fragment-index="5" class="fragment" style="">
+    Let $G = ({\color{#ff0000}X},{\color{#006cff}Y},E)$ be a bipartite graph. 
+    <span  data-fragment-index="6" class="fragment">
+      Define maximal complete bigraph (MCB) components $\mathscr{C} = \{C_1, \cdots, C_n\} \subseteq \mathcal{P}({\color{#ff0000}X} \cup {\color{#006cff}Y})$ of $G$ such that
+        <ul>
+          <li data-fragment-index="7" class="fragment">Every edge $\{u,v\} \in E$ is contained in some $C_i \in \mathscr{C}$</li>
+          <li data-fragment-index="8" class="fragment">Every $C_i \in \mathscr{C}$ induces a complete bipartite graph $G[C_i]$</li>
+          <li data-fragment-index="9" class="fragment">Every $C_i \in \mathscr{C}$ is maximal.</li>
+        </ul>
+    </span>
+  </div>
+</section>
+<!-- Def 5 -->
+<section class="graph-section" id="chained-comp-bigraph2">
+  <div style="margin-left: 25%;" id="chained-comp-bigraph2-cy" class="graph quarterheight">
+  </div>
+  <div id="chained-comp-bigraph2-0" style="margin-left:20%">
+    <span style="margin-right:5%">$\mathscr{C}=\{$</span>
+    <span><span style="color:red">$C_1$</span>$,$</span>
+    <span style="margin-left:15%;"><span style="color:green">$C_2$</span>$,$</span>
+    <span style="margin-left:10%;color:blue">$C_3$</span>
+    <span>$\}$</span>
+  </div>
+  <div class="fragment" data-fragment-index="16" style="text-align: center"><b>Definition 5</b></div>
+  <div data-fragment-index="17" class="fragment" style="">
+    Let $G = ({\color{#ff0000}X},{\color{#006cff}Y},E)$ be a bipartite graph <span data-fragment-index="18" class="fragment">with corresponding MCB-components $\mathscr{C} = \{C_1, \cdots, C_n\}$.</span> <span data-fragment-index="19" class="fragment">Let us write $G[C_i] = ({\color{#ff0000}X}_i, {\color{#006cff}Y}_i, E_i)$.</span>
+  </div>
+</section>
+<!-- Def 4, 6 -->
+<section class="graph-section" id="chained-comp-bigraph3">
+  <div style="margin-left: 25%;" id="chained-comp-bigraph3-cy" class="graph quarterheight">
+  </div>
+  <div id="chained-comp-bigraph3-0" data-fragment-index="3" class="fragment" style="margin-left:20%">
+    <span style="margin-right:5%">$\mathscr{C}=\{$</span>
+    <span><span style="color:red">$C_1$</span>$,$</span>
+    <span style="margin-left:15%;"><span style="color:green">$C_2$</span>$,$</span>
+    <span style="margin-left:10%;color:blue">$C_3$</span>
+    <span>$\}$</span>
+  </div>
+  <div style="margin-left:20%">
+    <span data-fragment-index="14" class="fragment" style="margin-right:5%">$S$</span>
+    <span data-fragment-index="15" class="fragment">$= \{s_1, s_2\}$</span>
+    <span data-fragment-index="16" class="fragment" style="">$= \{$</span>
+      <span data-fragment-index="18" class="fragment" style=""><span style="color:red">$x$</span>$_2$</span>
+      <span data-fragment-index="20" class="fragment" style="">$,$ <span style="color:blue">$y$</span>$_5$</span>
+    <span data-fragment-index="16" class="fragment" style="">$\}$</span>
+  </div>
+  <div class="fragment" data-fragment-index="4" style="text-align: center"><b>Definition 4</b></div>
+  <div data-fragment-index="5" class="fragment" style="">
+    Let $G = ({\color{#ff0000}X},{\color{#006cff}Y},E)$ be a bipartite graph. 
+    <span data-fragment-index="6" class="fragment">
+      $G$ is a Chained Complete bipartite graph<span data-fragment-index="7" class="fragment">, if $G$ has a MCB-component $\mathscr{C} = \{C_1, \dots, C_n\}$ such that</span>
+      <ul>
+        <li data-fragment-index="8" class="fragment"> $|C_i \cap C_{i+1}| = 1$</li>
+        <li data-fragment-index="9" class="fragment"> $C_i \cap C_j = \emptyset$, if $|i-j|>1$.</li>
+      </ul>
+    </span>
+  </div>
+  <div class="fragment" data-fragment-index="10" style="text-align: center"><b>Definition 6</b></div>
+  <div data-fragment-index="11" class="fragment" style="">
+    Let $G$ be a chained complete bigraph with corresponding MCB-components $\mathscr{C} = \{C_1, \dots, C_n\}$.<span class="fragment" data-fragment-index="12"> We define overlapping vertex $s_i = C_i \cap C_{i+1}$</span><span class="fragment" data-fragment-index="13"> and $S = \{s_i ~|~ 1 \leq i \leq n-1\}$.</span>
+  </div>
+  <div style="margin-left: 50%; height: 0%"  id="chained-comp-bigraph3-1" data-fragment-index="17" class="fragment"></div>
+  <div style="margin-left: 50%; height: 0%"  id="chained-comp-bigraph3-2" data-fragment-index="19" class="fragment"></div>
+  <div style="margin-left: 50%; height: 0%"  id="chained-comp-bigraph3-3" data-fragment-index="21" class="fragment"></div>
+</section>
+<!-- Def 7 -->
+<section class="graph-section" id="chained-comp-bigraph4">
+  <div style="margin-left: 25%;" id="chained-comp-bigraph4-cy" class="graph quarterheight">
+  </div>
+  <div id="chained-comp-bigraph4-0" data-fragment-index="3" class="fragment" style="margin-left:20%">
+    <span style="margin-right:5%">$\mathscr{C}=\{$</span>
+    <span><span style="color:red">$C_1$</span>$,$</span>
+    <span style="margin-left:15%;"><span style="color:green">$C_2$</span>$,$</span>
+    <span style="margin-left:10%;color:blue">$C_3$</span>
+    <span>$\}$</span>
+  </div>
+  <div style="margin-left:20%">
+    <span style="margin-right:5%">$S$</span>
+    <span>$= \{s_1, s_2\}$</span>
+    <span style="">$= \{$</span>
+      <span style=""><span style="color:red">$x$</span>$_2$</span>
+      <span style="">$,$ <span style="color:blue">$y$</span>$_5$</span>
+    <span style="">$\}$</span>
+  </div>
+  <div class="fragment" data-fragment-index="10" style="text-align: center"><b>Definition 7</b></div>
+  <div data-fragment-index="11" class="fragment" style="">
+    Let $G$ be a chained complete bigraph with corresponding MCB-components $\mathscr{C}$<span class="fragment" data-fragment-index="12"> and overlapping set $S$. </span><span class="fragment" data-fragment-index="13"> For $s_i \in S$ and $C_j \in \mathscr{C}$</span><span class="fragment" data-fragment-index="14">, we define 
+        <table>
+          <tr>
+            <td>$g(s_i, C_j)$</td>
+            <td>$= |N(s_i) \cap C_j|$</td>
+            <td class="fragment" data-fragment-index="15">$= \begin{cases} |{\color{#ff0000}X}_j| & \text{, if } s_i \in {\color{#006cff}Y}_j \\ |{\color{#006cff}Y}_j| & \text{, if } s_i \in {\color{#ff0000}X}_j \end{cases}$</td>
+          </tr>
+      </table> 
+    </span>
+  </div>
+  <div>
+    <table>
+      <tr>
+        <td data-fragment-index="18" class="fragment">$g({\color{#ff0000}x}_2, {\color{#ff0000}C_1}) = |\{{\color{#006cff}y}_1, {\color{#006cff}y}_2\}| = 2$</td>
+        <td data-fragment-index="19" class="fragment">$g({\color{#ff0000}x}_2, {\color{#008000}C_2}) = |\{{\color{#006cff}y}_3, {\color{#006cff}y}_4, {\color{#006cff}y}_5\}| = 3$</td>
+      </tr>
+      <tr>
+        <td data-fragment-index="21" class="fragment">$g({\color{#006cff}y}_5, {\color{#008000}C_2}) = |\{{\color{#ff0000}x}_2, {\color{#ff0000}x}_3\}| = 2$</td>
+        <td data-fragment-index="22" class="fragment">$g({\color{#006cff}y}_5, {\color{#0000ff}C_3}) = |\{{\color{#ff0000}x}_4\}| = 1$</td>
+      </tr>
+    </table>
+  </div>
+  <div style="margin-left: 50%; height: 0%"  id="chained-comp-bigraph4-1" data-fragment-index="17" class="fragment"></div>
+  <div style="margin-left: 50%; height: 0%"  id="chained-comp-bigraph4-2" data-fragment-index="20" class="fragment"></div>
+  <div style="margin-left: 50%; height: 0%"  id="chained-comp-bigraph4-3" data-fragment-index="23" class="fragment"></div>
+</section>
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h3>Results - Chained Complete Bipartite Graph</h3>
+<section class="graph-section">
+  <div style="text-align: center"><b>Theorem 2</b></div>
+  <div data-fragment-index="1" class="fragment" style="">Let $G = ({\color{#ff0000}X},{\color{#006cff}Y},E)$ be a  Chained Complete Bigraph with corresponding MCB-components $\mathscr{C}$.</div>
+  <div data-fragment-index="3" class="fragment" style="margin-left:0%;font-size: 0.75em !important; text-align:left">
+    <table>
+      <tr>
+        <td>$I(G) = \sum\limits_{i=1}^{n}|{\color{#ff0000}X}_i| \cdot |{\color{#006cff}Y}_i| + (|{\color{#ff0000}X}_i| \mod 2) \cdot (|{\color{#006cff}Y}_i| \mod 2)$</td>
+        <td data-fragment-index="4" class="fragment" style="font-size: 0.7em !important;">
+          $~~~~\leftarrow$ Complete bigraph
+        </td>
+      </tr>
+      <tr>
+        <td>$~~~~~~~~-\Big( \sum\limits_{i=1}^{n-1}g(s_i,C_i)+g(s_i,C_{i+1})\Big)$
+        </td>
+        <td rowspan="2" data-fragment-index="5" class="fragment" style="font-size: 0.7em !important;vertical-align: middle;">
+          $\left.\begin{aligned}
+                ~\\
+                ~\\
+                ~\\
+                ~\\
+                ~\\
+                ~\\
+            \end{aligned}\right\rbrace\leftarrow$ Overlapping vertex correction
+        </td> 
+      </tr>
+      <tr>
+        <td>
+            $~~~~~~~~+\Big( \sum\limits_{i=1}^{n-1}\big|g(s_i,C_i)-g(s_i,C_{i+1})\big|\Big)$
+        </td>
+      </tr>
+    </table>
+  </div>
+</section>
+<section style="font-size: 0.9em !important" class="graph-section">
+  <div style="text-align: center"><b>Lemma 5</b></div>
+  <div data-fragment-index="1" class="fragment" style="">Let $G = ({\color{#ff0000}X},{\color{#006cff}Y},E)$ be a Chained Complete Bigraph with corresponding MCB-components $\mathscr{C}$.</div>
+  <div data-fragment-index="2" class="fragment" style="margin-left:0%;font-size: 0.75em !important; text-align:left">
+    <table>
+      <tr>
+        <td>$I(G) \leq \sum\limits_{i=1}^{n}|{\color{#ff0000}X}_i| \cdot |{\color{#006cff}Y}_i| + (|{\color{#ff0000}X}_i| \mod 2) \cdot (|{\color{#006cff}Y}_i| \mod 2)$</td>
+      </tr>
+      <tr>
+        <td>$~~~~~~~~-\Big( \sum\limits_{i=1}^{n-1}g(s_i,C_i)+g(s_i,C_{i+1})\Big)+\Big( \sum\limits_{i=1}^{n-1}\big|g(s_i,C_i)-g(s_i,C_{i+1})\big|\Big)$
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div data-fragment-index="3"  class="fragment" style="text-align: center"><b>Proof</b></div>  
+  <div data-fragment-index="4" class="fragment">Construct an ordering $\sigma$ <span data-fragment-index="5" class="fragment">such that
+    <table style="font-size:0.75em;">
+      <tr>
+        <td>$I(\sigma, G)=\sum\limits_{i=1}^{n}|{\color{#ff0000}X}_i| \cdot |{\color{#006cff}Y}_i| + (|{\color{#ff0000}X}_i| \mod 2) \cdot (|{\color{#006cff}Y}_i| \mod 2)$</td>
+      </tr>
+      <tr>
+        <td>$~~~~~~~~~~~~-\Big( \sum\limits_{i=1}^{n-1}g(s_i,C_i)+g(s_i,C_{i+1})\Big)+\Big( \sum\limits_{i=1}^{n-1}\big|g(s_i,C_i)-g(s_i,C_{i+1})\big|\Big).$
+        </td>
+      </tr>
+    </table></span>
+    <span data-fragment-index="6" class="fragment">(Constuction similar to Lemma 1.)</span></div>
+    <div  data-fragment-index="7" class="fragment" style="text-align: right">
+      $\square$
+    </div>
+  </section>
+  <section>
+  <div data-fragment-index="5"  class="fragment" style="text-align: center"><b>Lemma 7</b></div>  
+  <div data-fragment-index="6" class="fragment">Let $G = ({\color{#ff0000}X},{\color{#006cff}Y},E)$ be a Chained Complete Bigraph with corresponding MCB-components $\mathscr{C}$.</div>
+  <div data-fragment-index="7" class="fragment" style="margin-left:0%;font-size: 0.75em !important; text-align:left">
+    <table>
+      <tr>
+        <td>$I(G) \geq \sum\limits_{i=1}^{n}|{\color{#ff0000}X}_i| \cdot |{\color{#006cff}Y}_i| + (|{\color{#ff0000}X}_i| \mod 2) \cdot (|{\color{#006cff}Y}_i| \mod 2)$</td>
+      </tr>
+      <tr>
+        <td>$~~~~~~~~-\Big( \sum\limits_{i=1}^{n-1}g(s_i,C_i)+g(s_i,C_{i+1})\Big)+\Big( \sum\limits_{i=1}^{n-1}\big|g(s_i,C_i)-g(s_i,C_{i+1})\big|\Big)$
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div data-fragment-index="8"  class="fragment" style="text-align: center"><b>Proof</b></div>  
+  <div data-fragment-index="9" class="fragment">Induction on $|\mathscr{C}|$.</div>
+    <div  data-fragment-index="10" class="fragment" style="text-align: right">
+      $\square$
+    </div>
+</section>
+<section class="graph-section">
+  <div style="text-align: center"><b>Theorem 2</b></div>
+  <div style="">Let $G = ({\color{#ff0000}X},{\color{#006cff}Y},E)$ be a  Chained Complete Bigraph with corresponding MCB-components $\mathscr{C}$.</div>
+  <div style="margin-left:0%;font-size: 0.75em !important; text-align:left">
+    <table>
+      <tr>
+        <td>$I(G) = \sum\limits_{i=1}^{n}|{\color{#ff0000}X}_i| \cdot |{\color{#006cff}Y}_i| + (|{\color{#ff0000}X}_i| \mod 2) \cdot (|{\color{#006cff}Y}_i| \mod 2)$</td>
+      </tr>
+      <tr>
+        <td>$~~~~~~~~-\Big( \sum\limits_{i=1}^{n-1}g(s_i,C_i)+g(s_i,C_{i+1})\Big)$
+        </td>
+      </tr>
+      <tr>
+        <td>
+            $~~~~~~~~+\Big( \sum\limits_{i=1}^{n-1}\big|g(s_i,C_i)-g(s_i,C_{i+1})\big|\Big)$
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div class="fragment" style="text-align: center"><b>Proof</b></div>
+  <div class="fragment">Follows from Lemma 5 and Lemma 7.</div>
+  <div class="fragment" style="text-align: right">
+    $\square$
+  </div>
+</section>
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h3>Future work</h3>
+<section>
+  <div class="fragment" style="text-align:center"><b>Verifying Chained Complete Bigraph</b></div>
+  <div class="fragment">Can we determine in quasilinear time whether a graph is a Chained Complete Bigraph?</div>
+  <br>
+  <div class="fragment" style="text-align:center"><b>Multiple overlapping vertices</b></div>
+  <div class="fragment">Do we still have a quasilinear time algorithm, when consecutive MCB-components have more than 1 overlapping vertex?</div>
+</section>
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h3>Bibliography</h3>
+<table style="font-size:0.75em">
+  <tr>
+    <td>[1]</td>
+    <td>Biedl, T., Chan, T., Ganjali, Y., Hajiaghayi, M.T., Wood, D.R.: Balanced vertex-orderings of graphs. Discrete Applied Mathematics 148(1), 27 – 48 (2005). https://doi.org/https://doi.org/10.1016/j.dam.2004.12.001, http://www.sciencedirect.com/science/article/pii/S0166218X04003828</td>
+  </tr>
+  <tr>
+    <td>[2]</td>
+    <td>Dı́az, J., Petit, J., Serna, M.: A survey of graph layout problems. ACM Computing Surveys (CSUR) 34(3), 313–356 (2002)</td>
+  </tr>
+  <tr>
+    <td>[3]</td>
+    <td>Gorzny, J.: Computing imbalance-minimal orderings for bipartite permutation graphs and threshold graphs. In: Wu, W., Zhang, Z. (eds.) Combinatorial Optimization and Applications. pp. 766–779. Springer International Publishing, Cham (2020)</td>
+  </tr>
+  <tr>
+    <td>[4]</td>
+    <td>Gorzny, J., Buss, J.F.: Imbalance, cutwidth, and the structure of optimal orderings. In: Du, D.Z., Duan, Z., Tian, C. (eds.) Computing and Combinatorics. pp. 219–231. Springer International Publishing, Cham (2019)</td>
+  </tr>
+  <tr>
+    <td>[5]</td>
+    <td>Harvey, D., van der Hoeven, J.: Integer multiplication in time o(n log n). Annals of Mathematics 193(2), 563–617 (2021), https://www.jstor.org/stable/10.4007/annals.2021.193.2.4</td>
+  </tr>
+  <tr>
+    <td>[6]</td>
+    <td>Kára, J., Kratochvı́l, J., Wood, D.R.: On the complexity of the balanced vertex ordering problem. In: Wang, L. (ed.) Computing and Combinatorics. pp. 849–858. Springer Berlin Heidelberg, Berlin, Heidelberg (2005)</td>
+  </tr>
+  <tr>
+    <td>[7]</td>
+    <td>Wood, D.: Minimising the number of bends and volume in three-dimensional orthogonal graph drawings with a diagonal vertex layout. Algorithmica (New York) 39 (03 2002). https://doi.org/10.1007/s00453-004-1091-4</td>
+  </tr>
+</table>
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h3>The end</h3>
+<section>
+  <h2 style="text-align: center; margin-top:12%">Thank you for your attention!<h2>
+</section>
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h3>Appendix: Results - Complete Bipartite Graph</h3>
+<!-- odd odd sandwich -->
+<section class="graph-section"  id="comp-bigraph2">
+  <div style="text-align: center"><b>Lemma 1</b></div>
+  <div>
+    Let $G = ({\color{#ff0000}X},{\color{#006cff}Y},E)$ be a complete bipartite graph<span>, then there exists an ordering $\sigma$ such that</span>
+  </div>
+  <div>
+    $$I(\sigma) = |{\color{#ff0000}X}| \cdot |{\color{#006cff}Y}| + (|{\color{#ff0000}X}| \mod 2) \cdot (|{\color{#006cff}Y}| \mod 2).$$
+  </div>
+  <div style="text-align: center"><b>Proof</b></div>
+  <div >Case: $|{\color{#ff0000}X}|$ odd and $|{\color{#006cff}Y}|$ odd</div>
+  <div id="comp-bigraph2-3" style="margin-left: 0%; width: 10% !important; float:left; height: 1em; line-height: 7em;" data-fragment-index="6" class="fragment">
+    $\sigma_{sw} =$
+  </div>
+  <div style="width: 75% !important;" id="comp-bigraph2-cy" class="fragment graph halfheight" data-fragment-index="3"></div>
+  <div style="margin-left: 50%; height: 0%" id="comp-bigraph2-1" data-fragment-index="4" class="fragment"></div>
+  <div style="margin-left: 50%; height: 0%" id="comp-bigraph2-2" data-fragment-index="5" class="fragment"></div>
+  <div style="margin-left: 15%; height: 10%; width: 100% !important;" data-fragment-index="7" class="fragment">
+    $\underbrace{~~~~~~~~~~~~~~~~~~~~~~~~}_{I(v) = |{\color{#ff0000}X}|}$
+    <span data-fragment-index="8" class="fragment">
+    $\underbrace{~~~~~~~~}_{\scriptsize I(x_i) = 1}$
+    </span>
+    <span data-fragment-index="9" class="fragment">
+    $\underbrace{~~~~~~}_{\scriptsize I(y_i) = 1}$
+    </span>
+    <span data-fragment-index="8" class="fragment">
+    $\underbrace{~~~~~~~~~~~~~~~~}_{I(x_i) = 1}$
+    </span>
+    $\underbrace{~~~~~~~~~~~~~~~~~~~~~~~~}_{I(v) = |{\color{#ff0000}X}|}$
+  </div>
+  <div style="margin-left: 0%; text-align:center" data-fragment-index="10" class="fragment">
+    <span>$I(\sigma_{sw}) =$</span> 
+    <span data-fragment-index="11" class="fragment">$ |{\color{#ff0000}X}| \cdot (|{\color{#006cff}Y}|-1)$</span>
+    <span data-fragment-index="12" class="fragment">$+ |{\color{#ff0000}X}|$</span>
+    <span data-fragment-index="13" class="fragment">$+ 1$</span>
+    <span data-fragment-index="14" class="fragment">$= |{\color{#ff0000}X}| \cdot |{\color{#006cff}Y}| + 1$</span>
+  </div>
+</section>
+<section class="graph-section">
+  <div style="text-align: center;color:purple"><b>Remark 1</b></div>
+  <div>
+   Let $G = ({\color{#ff0000}X},{\color{#006cff}Y},E)$ be a complete bipartite graph <span data-fragment-index="1" class="fragment">such that $|{\color{#ff0000}X}|$ and $|{\color{#006cff}Y}|$ are odd</span>
+   <span  data-fragment-index="2" class="fragment">and $\sigma$ be an imbalance optimal ordering.</span>
+  </div>
+  <br>
+  <div>
+    <div data-fragment-index="3" class="fragment">$$I(\sigma, {\color{#006cff}y}_{\left\lceil \frac{|{\color{#006cff}Y} |}{2} \right\rceil}) = 1$$</div>
+  </div>
+  <div style="width: 75% !important;" id="comp-bigraph4-cy" class="fragment graph halfheight" data-fragment-index="4"></div>
+  <div id="comp-bigraph4-1-cy" class="fragment" data-fragment-index="5"></div>
+</section>
+<section class="graph-section">
+  <div style="text-align: center;"><b>Theorem 1</b></div>
+    <div>
+      <div>Let $G = ({\color{#ff0000}X},{\color{#006cff}Y},E)$ be a complete bipartite graph<span>, then</span></div>
+      <div>$$I(G) = |{\color{#ff0000}X}| \cdot |{\color{#006cff}Y}| + (|{\color{#ff0000}X}| \mod 2) \cdot (|{\color{#006cff}Y}| \mod 2).$$</div>
+    </div>
+  <div style="text-align: center;"><b>Proof</b></div>
+  <div style="text-align: center;" class="fragment" data-fragment-index="0">Follows from Lemma 1 + Lemma 2 + Lemma 3 + Remark 1</div>
+  <div id="comp-bigraph5-7-cy" class="fragment" data-fragment-index="11" style="margin-left: 0%; width: 10% !important; float:left; height: 1em; line-height: 7em;">
+    $\sigma_{sw} =$
+  </div>
+  <div style="width: 75% !important;" id="comp-bigraph5-cy" class="fragment graph halfheight" data-fragment-index="1"></div>
+  <div id="comp-bigraph5-1-cy" class="fragment" data-fragment-index="5"></div>
+  <div id="comp-bigraph5-2-cy" class="fragment" data-fragment-index="6"></div>
+  <div id="comp-bigraph5-3-cy" class="fragment" data-fragment-index="7"></div>
+  <div id="comp-bigraph5-4-cy" class="fragment" data-fragment-index="8"></div>
+  <div id="comp-bigraph5-5-cy" class="fragment" data-fragment-index="9"></div>
+  <div id="comp-bigraph5-6-cy" class="fragment" data-fragment-index="10"></div>
+  <div ></div>
+  <br>
+  <div style="text-align: center;" class="fragment" data-fragment-index="12">Sandwiched ordering is optimal!</div>
+  <div class="fragment" data-fragment-index="13" style="text-align: right">
+    $\square$
+  </div>
+</section>
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <h3>Appendix: Practical applications: Graph drawing</h3>
+<section style="height: 15em" data-transition="none">
+</section>
+<section style="height: 15em" data-transition="none" id="practical0">
+  <div width=100% style="margin-left: 25%; height: 15em" id="draw-graph-svg"></div>
+</section>
+<section data-transition="none" class="graph-section">
+  <div style="text-align: center">Minimizing edge bends in 3-D orthogonal graph drawings</div>
+</section>
+<section data-transition="none" class="graph-section" id="practical1" >
+  <div style="text-align: center">Minimizing <span style="color:red">edge bends</span> in 3-D orthogonal graph drawings</div>
+  <div style="margin-left:25%" width=50% height=50% id="practical1-cy" class="graph"></div>
+  <div id="nrbends" class="fragment" style="text-align: center">0 bends</div>
+  <div id="practical1" class="fragment"></div>
+  <div id="practical2" class="fragment"></div>
+  <div id="practical3" class="fragment"></div>
+  <div id="practical4" class="fragment"></div>
+</section>
+<!-- ----------------------------------------------------------------------------3d orthogonal graph------------------------------------------------------------- -->
+<!-- TODO -->
+<section class="graph-section" >
+  <div style="text-align: center">Minimizing edge bends in <span style="color:red">3-D orthogonal graph drawings</span></div>
+  <div style="width: 49%; float: left;font-size: 0.65em;">
+    <div class="fragment">Let $G$ be a graph.</div>
+  </div>
+  <div width=50% style="margin-left: 50%;">
+    <img class="fragment" style="height: 5em; width: auto;" data-src="images/gridgraph.svg">
+  </div>
+</section>
+<section class="graph-section">
+  <div style="text-align: center">Minimizing edge bends in <span style="color:red">3-D orthogonal graph drawings</span></div>
+  <div style="width: 49%; float: left;font-size: 0.65em;">
+    <div>Let $G$ be a graph.</div>
+    <div>Grid points in $\mathbb{Z}^3$ space.</div>
+  </div>
+  <div width=50% style="margin-left: 50%;">
+    <img style="height: 5em; width: auto;" data-src="images/gridgraph.svg">
+  </div>
+</section>
+<section class="graph-section" id="practical5">
+  <div style="text-align: center">Minimizing edge bends in <span style="color:red">3-D orthogonal graph drawings</span></div>
+  <div style="width: 49%; float: left;font-size: 0.65em;">
+    <div>Let $G$ be a graph.</div>
+    <div>Grid points in $\mathbb{Z}^3$ space.</div>
+  </div>
+  <div width=50% style="margin-left: 50%;">
+    <img style="height: 5em; width: auto;" data-src="images/gridgraph.svg">
+  </div>
+  <div width=25% style="margin-left: 50%; height: 12em; width: auto" id="draw-grid-svg1"></div>
+</section>
+<section class="graph-section" >
+  <div style="text-align: center">Minimizing edge bends in <span style="color:red">3-D orthogonal graph drawings</span></div>
+  <div style="width: 49%; float: left;font-size: 0.65em;">
+    <div >Let $G$ be a graph.</div>
+    <div >Grid points in $\mathbb{Z}^3$ space.</div>
+    <div >Drawing of graph $G$ such that:</div>
+    <ul>
+      <li class="fragment">$V(G)$ lie on the grid points.</li>
+    </ul>
+  </div>
+  <div width=50% style="margin-left: 50%;">
+    <img style="height: 5em; width: auto;" data-src="images/gridgraph.svg">
+  </div>
+  <img width=25% style=" margin-top:0; margin-left: 50%; height: 12em; width: auto" data-src="images/grid1.svg">
+</section>
+<section class="graph-section">
+  <div style="text-align: center">Minimizing edge bends in <span style="color:red">3-D orthogonal graph drawings</span></div>
+  <div style="width: 49%; float: left;font-size: 0.65em;">
+    <div >Let $G$ be a graph.</div>
+    <div >Grid points in $\mathbb{Z}^3$ space.</div>
+    <div >Drawing of graph $G$ such that:</div>
+    <ul>
+      <li>$V(G)$ lie on the grid points.</li>
+    </ul>
+  </div>
+  <div width=50% style="margin-left: 50%;">
+    <img style="height: 5em; width: auto;" data-src="images/gridgraph.svg">
+  </div>
+  <img width=25% style=" margin-top:0; margin-left: 50%; height: 12em; width: auto" data-src="images/grid2.svg">
+</section>
+<section class="graph-section">
+  <div style="text-align: center">Minimizing edge bends in <span style="color:red">3-D orthogonal graph drawings</span></div>
+  <div style="width: 49%; float: left;font-size: 0.65em;">
+    <div >Let $G$ be a graph.</div>
+    <div >Grid points in $\mathbb{Z}^3$ space.</div>
+    <div >Drawing of graph $G$ such that:</div>
+    <ul>
+      <li>$V(G)$ lie on the grid points.</li>
+      <li >Edges are axis aligned.<br>The bending points of edges lie on the grid points.</li>
+    </ul>
+  </div>
+  <div width=50% style="margin-left: 50%;">
+    <img style="height: 5em; width: auto;" data-src="images/gridgraph.svg">
+  </div>
+  <img width=25% style=" margin-top:0;  margin-left: 50%; height: 12em; width: auto" data-src="images/grid2.svg">
+</section>
+<section class="graph-section" id="practical6">
+  <div style="text-align: center">Minimizing edge bends in <span style="color:red">3-D orthogonal graph drawings</span></div>
+  <div style="width: 49%; float: left;font-size: 0.65em;">
+    <div >Let $G$ be a graph.</div>
+    <div >Grid points in $\mathbb{Z}^3$ space.</div>
+    <div >Drawing of graph $G$ such that:</div>
+    <ul>
+      <li>$V(G)$ lie on the grid points.</li>
+      <li >Edges are axis aligned.<br>The bending points of edges lie on the grid points.</li>
+    </ul>
+  </div>
+  <div width=50% style="margin-left: 50%;">
+    <img style="height: 5em; width: auto;" data-src="images/gridgraph.svg">
+  </div>
+  <div width=25% style="margin-left: 50%; height: 12em; width: auto" id="draw-grid-svg2"></div>
+</section>
+<section class="graph-section" >
+  <div style="text-align: center">Minimizing edge bends in <span style="color:red">3-D orthogonal graph drawings</span></div>
+  <div style="width: 49%; float: left;font-size: 0.65em;">
+    <div >Let $G$ be a graph.</div>
+    <div >Grid points in $\mathbb{Z}^3$ space.</div>
+    <div >Drawing of graph $G$ such that:</div>
+    <ul>
+      <li >$V(G)$ lie on the grid points.</li>
+      <li >Edges are axis aligned.<br>The bending points of edges lie on the grid points.</li>
+      <li >No edges intersect.</li>
+    </ul>
+  </div>
+  <div width=50% style="margin-left: 50%;">
+    <img style="height: 5em; width: auto;" data-src="images/gridgraph.svg">
+  </div>
+  <img width=25% style=" margin-top:0; margin-left: 50%; height: 12em; width: auto" data-src="images/grid3.svg">
+</section>
+<section class="graph-section" >
+  <div style="text-align: center">Minimizing edge bends in <span style="color:red">3-D orthogonal graph drawings</span></div>
+  <div style="width: 49%; float: left;font-size: 0.65em;">
+    <div >Let $G$ be a graph.</div>
+    <div >Grid points in $\mathbb{Z}^3$ space.</div>
+    <div >Drawing of graph $G$ such that:</div>
+    <ul>
+      <li >$V(G)$ lie on the grid points.</li>
+      <li >Edges are axis aligned.<br>The bending points of edges lie on the grid points.</li>
+      <li >No edges intersect.</li>
+    </ul>
+  </div>
+  <div width=50% style="margin-left: 50%;">
+    <img style="height: 5em; width: auto;" data-src="images/gridgraph.svg">
+  </div>
+  <img width=25% style=" margin-top:0; margin-left: 50%; height: 12em; width: auto" data-src="images/grid4.svg">
+</section>
+<section class="graph-section" id="practical7">
+  <div style="text-align: center">Minimizing edge bends in <span style="color:red">3-D orthogonal graph drawings</span></div>
+  <div style="width: 49%; float: left;font-size: 0.65em;">
+    <div >Let $G$ be a graph.</div>
+    <div >Grid points in $\mathbb{Z}^3$ space.</div>
+    <div >Drawing of graph $G$ such that:</div>
+    <ul>
+      <li >$V(G)$ lie on the grid points.</li>
+      <li >Edges are axis aligned.<br>The bending points of edges lie on the grid points.</li>
+      <li >No edges intersect.</li>
+    </ul>
+  </div>
+  <div width=50% style="margin-left: 50%;">
+    <img style="height: 5em; width: auto;" data-src="images/gridgraph.svg">
+  </div>
+  <div width=25% style="margin-left: 50%; margin-top:0; height: 12em; width: auto" id="draw-grid-svg3"></div>
+</section>
+<section class="graph-section">
+  <div style="text-align: center">Minimizing edge bends in <span style="color:red">3-D orthogonal graph drawings</span></div>
+  <div style="width: 49%; float: left;font-size: 0.65em;">
+    <div >Let $G$ be a graph.</div>
+    <div >Grid points in $\mathbb{Z}^3$ space.</div>
+    <div >Drawing of graph $G$ such that:</div>
+    <ul>
+      <li style="color:red">$V(G)$ lie on the grid points.</li>
+      <li >Edges are axis aligned.<br>The bending points of edges lie on the grid points.</li>
+      <li >No edges intersect.</li>
+    </ul>
+  </div>
+  <div width=50% style="margin-left: 50%;">
+    <img style="height: 5em; width: auto;" data-src="images/gridgraph.svg">
+  </div>
+  <img width=25% style=" margin-top:0; margin-left: 50%; height: 12em; width: auto" data-src="images/grid5.svg">
+</section>
+<!-- ---------------------------------------------------------------------------------------------------------------------------------------------------------- -->
+<script src="lib/js/head.min.js"></script>
+<script src="js/reveal.js"></script>
+<script src="js/moment.min.js"></script>
+<script src="js/jquery-3.5.1.min.js"></script>
+<!-- cytoscape packages base -->
+<script src="packages/cytoscape-3.18.0/package/dist/cytoscape.umd.js"></script>
+<script src="lib/js/cytoscape/cytoscape-svg.js"></script>
+<script src="lib/js/cytoscape/cytoscape-cose-bilkent.js"></script>
+<script src="lib/js/vivus/vivus.js"></script>
+<!-- cytoscape packages extra -->
+<script src="packages/layout-base-2.0.0/package/layout-base.js"></script>
+<script src="packages/avsdf-base-1.0.0/package/avsdf-base.js"></script>
+<script src="packages/cytoscape-avsdf-1.0.0/package/cytoscape-avsdf.js"></script>
+<script src="packages/cytoscape-layers-2.1.0/package/dist/cytoscapelayers.umd.production.min.js"></script>
+<script src="packages/cytoscape-bubblesets-3.0.0/package/build/index.umd.js"></script>
+<!-- Graphs -->
+<script src="lib/graphs/highlight_functions.js"></script>
+<script src="lib/graphs/data/graph_data.js"></script>
+<script src="lib/graphs/graph1/graph1.js"></script>
+<script src="lib/graphs/data/example_permutation.js"></script>
+<script src="lib/graphs/data/complete_bigraph_data1.js"></script>
+<script src="lib/graphs/data/complete_bigraph_data2.js"></script>
+<script src="lib/graphs/data/complete_bigraph_data3.js"></script>
+<script src="lib/graphs/data/complete_bigraph_data4.js"></script>
+<script src="lib/graphs/data/complete_bigraph_data5.js"></script>
+<script src="lib/graphs/complete-bigraphs/complete_bigraph1.js"></script>
+<script src="lib/graphs/complete-bigraphs/complete_bigraph2.js"></script>
+<script src="lib/graphs/complete-bigraphs/complete_bigraph3-1.js"></script>
+<script src="lib/graphs/complete-bigraphs/complete_bigraph3-2.js"></script>
+<script src="lib/graphs/complete-bigraphs/complete_bigraph4.js"></script>
+<script src="lib/graphs/complete-bigraphs/complete_bigraph5.js"></script>
+<script src="lib/graphs/complete-bigraphs/complete_bigraph6.js"></script>
+<script src="lib/graphs/data/chained_comp_bipartite_graph_data.js"></script>
+<script src="lib/graphs/chained-comp-bigraphs/chained_comp_bigraph1.js"></script>
+<script src="lib/graphs/chained-comp-bigraphs/chained_comp_bigraph2.js"></script>
+<script src="lib/graphs/chained-comp-bigraphs/chained_comp_bigraph3.js"></script>
+<script src="lib/graphs/chained-comp-bigraphs/chained_comp_bigraph4.js"></script>
+<script src="lib/graphs/data/edge_bend_data.js"></script>
+<script src="lib/graphs/practical/practical1.js"></script>
+<script src="lib/graphs/practical/practical2.js"></script>
+<script src="lib/graphs/practical/practical3.js"></script>
+<script src="lib/graphs/practical/practical4.js"></script>
+<script src="lib/svg-anims/3d-orth-graphs.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function(){
+  Reveal.configure({
+    keyboard: {
+    40: 'next',
+    38: 'prev'
+    },
+    math: {
+      mathjax: 'js/MathJax.js',
+      config: 'TeX-AMS_HTML-full',  // See http://docs.mathjax.org/en/latest/config-files.html
+      "fast-preview": {disabled:true},
+      tex2jax: {
+        preview: "none",
+        inlineMath: [["$","$"],["\\(","\\)"]]
+      }
+    },
+    dependencies: [
+      { src: 'js/math.js', async: false }
+    ],
+    // try to keep graphs working properly
+    width: '100%',
+    height: '100%',
+    margin: 0,
+    minScale: 1,
+    maxScale: 1,
+    slideNumber: true,
+    controls: true
+  });
+  })
+</script>
+            </section>
+    
+
+
+    </div>
+
+
+  </div>
+
+  <div class="line top"></div>
+  <div class="line bottom"></div>
+  <div class="line left"></div>
+  <div class="line right"></div>
+
+  <script src="libs/reveal.js/4.3.1/reveal.js"></script>
+<script src="libs/reveal.js/4.3.1/plugin/notes/notes.js"></script>
+<script src="libs/reveal.js/4.3.1/plugin/markdown/markdown.js"></script>
+<script src="libs/reveal.js/4.3.1/plugin/highlight/highlight.js"></script>
+<script src="libs/reveal.js/4.3.1/plugin/math/math.js"></script>
+<script src="libs/reveal.js/4.3.1/plugin/fullscreen/plugin.js"></script>
+<script src="libs/reveal.js/4.3.1/plugin/animate/plugin.js"></script>
+<script src="libs/reveal.js/4.3.1/plugin/animate/svg.min.js"></script>
+<script src="libs/reveal.js/4.3.1/plugin/anything/plugin.js"></script>
+<script src="libs/reveal.js/4.3.1/plugin/anything/Chart.min.js"></script>
+<script src="libs/reveal.js/4.3.1/plugin/anything/d3/d3.v3.min.js"></script>
+<script src="libs/reveal.js/4.3.1/plugin/anything/d3.patch.js"></script>
+<script src="libs/reveal.js/4.3.1/plugin/anything/d3/queue.v1.min.js"></script>
+<script src="libs/reveal.js/4.3.1/plugin/anything/d3/topojson.v1.min.js"></script>
+<script src="libs/reveal.js/4.3.1/plugin/anything/function-plot.js"></script>
+<script src="libs/reveal.js/4.3.1/plugin/customcontrols/plugin.js"></script>
+<script src="libs/reveal.js/4.3.1/plugin/embed-tweet/plugin.js"></script>
+<script src="libs/reveal.js/4.3.1/plugin/chart/chart.min.js"></script>
+<script src="libs/reveal.js/4.3.1/plugin/chart/plugin.js"></script>
+<script src="libs/reveal.js/4.3.1/plugin/verticator/verticator.js"></script>
+
+<script src="libs/reveal.js/4.3.1/plugin/zoom/zoom.js"></script>
+<script src="libs/reveal.js/4.3.1/plugin/search/search.js"></script>
+<script src="libs/reveal.js/4.3.1/plugin/menu/menu.js"></script>
+<script src="libs/reveal.js/4.3.1/plugin/chalkboard/plugin.js"></script>
+
+<!--	<script src="libs/reveal.js/4.3.1/plugin/audio-slideshow/plugin.js"></script>  -->
+<!--	<script src="libs/reveal.js/4.3.1/plugin/audio-slideshow/recorder.js"></script>-->
+<!--	<script src="libs/reveal.js/4.3.1/plugin/audio-slideshow/RecordRTC.js"></script>-->
+
+  
+
+<script>
+  const printPlugins = [
+      RevealNotes,
+      RevealHighlight,
+      RevealMath,
+      RevealAnimate,
+      RevealChalkboard, 
+			RevealEmbedTweet,
+			RevealChart,
+		];
+
+		const plugins =  [...printPlugins,
+		RevealZoom, 
+		RevealSearch, 
+				RevealMarkdown, 
+				RevealMenu, 
+				RevealFullscreen,
+				RevealAnything,
+				//RevealAudioSlideshow,
+				//RevealAudioRecorder,
+				RevealCustomControls, 
+				// poll
+				// question
+				// seminar
+				Verticator 
+				 ]
+
+
+		// Also available as an ES module, see:
+		// https://revealjs.com/initialization/
+		Reveal.initialize({
+			controls: true,
+      controlsTutorial: true,
+      controlsLayout: 'bottom-right',
+      controlsBackArrows: 'faded',
+      progress: true,
+      slideNumber: true,
+      //#showSlideNumber "all" "print" "speaker"
+      hash: true, //# hash: false,
+      //# respondToHashChanges: true,
+      //# history: false,
+      keyboard: true,
+      //#keyboardCondition: null,
+      overview: true,
+      center: false,
+      touch: true,
+      loop: false,
+      rtl: false,
+      //#navigationMode: 'default', linear grid
+      shuffle: false,
+      fragments: true,
+      fragmentInURL: false,
+      embedded: false,
+      help: true,
+      //#pause: true
+      showNotes: false,
+      autoPlayMedia: false, // TODO fix this to a nullable value
+      //#preloadIframes: null. true false
+      //#autoAnimate: true
+      //#autoAnimateMatcher: null,
+      //#autoAnimateEasing: 'ease',
+      //autoAnimateDuration: 1.0,
+      //#autoAnimateUnmatched: true
+      //#autoAnimateStyles: []
+      autoSlide: 0, // TODO fix this to a falseable value
+      autoSlideStoppable: true,
+      autoSlideMethod: '0',
+      defaultTiming: 120,
+      mouseWheel: false,
+      //#previewLinks: false
+      //#postMessage: true, // TODO : this can cause issues with the vscode api ???
+      //#postMessageEvents: false,
+      //#focusBodyOnPageVisibilityChange: true,
+      transition: 'fade',
+      transitionSpeed: 'default',
+      backgroundTransition: 'fade',
+      //#pdfMaxPagesPerSlide: Number.POSITIVE_INFINITY,
+      //#pdfSeparateFragments: true,
+      //#pdfPageHeightOffset: -1,
+      viewDistance: 3,
+      //#mobileViewDistance: 2,
+      display: 'block',
+      //#hideInactiveCursor: true,
+      //#hideCursorTime: 5000
+
+      // Parallax Background
+      parallaxBackgroundImage: '',
+      parallaxBackgroundSize: '',
+      parallaxBackgroundHorizontal: 0,
+      parallaxBackgroundVertical: 0,
+
+      //Presentation Size
+      width: 960,
+			height: 700,
+			margin: 0.04,
+      minScale: 0.2,
+      maxScale: 2,
+      disableLayout: false,
+
+      audio: {
+        prefix: 'audio/', // audio files are stored in the "audio" folder
+        suffix: '.ogg', // audio files have the ".ogg" ending
+        textToSpeechURL: null, // the URL to the text to speech converter
+        defaultNotes: false, // use slide notes as default for the text to speech converter
+        defaultText: false, // use slide text as default for the text to speech converter
+        advance: 0, // advance to next slide after given time in milliseconds after audio has played, use negative value to not advance
+        autoplay: false, // automatically start slideshow
+        defaultDuration: 5, // default duration in seconds if no audio is available
+        defaultAudios: true, // try to play audios with names such as audio/1.2.ogg
+        playerOpacity: 0.05, // opacity value of audio player if unfocused
+        playerStyle: 'position: fixed; bottom: 4px; left: 25%; width: 50%; height:75px; z-index: 33;', // style used for container of audio controls
+        startAtFragment: false, // when moving to a slide, start at the current fragment or at the start of the slide
+      },
+      
+      chalkboard: { // font-awesome.min.css must be available
+        //src: "chalkboard/chalkboard.json",
+        storage: "chalkboard-demo",
+      },
+      
+			customcontrols: {
+					controls: [
+      						{
+						  id: 'toggle-overview',
+						  title: 'Toggle overview (O)',
+						  icon: '<i class="fa fa-th"></i>',
+						  action: 'Reveal.toggleOverview();'
+						}
+						,
+      {
+        icon: '<i class="fa fa-pen-square"></i>',
+        title: 'Toggle chalkboard (B)',
+        action: 'RevealChalkboard.toggleChalkboard();'
+      },
+      {
+        icon: '<i class="fa fa-pen"></i>',
+        title: 'Toggle notes canvas (C)',
+        action: 'RevealChalkboard.toggleNotesCanvas();'
+      }
+      
+				]
+			},
+			chart: {
+					defaults: { 
+						color: 'lightgray', // color of labels
+						scale: { 
+							beginAtZero: true, 
+							ticks: { stepSize: 1 },
+							grid: { color: "lightgray" } , // color of grid lines
+						},
+					},
+					line: { borderColor: [ "rgba(20,220,220,.8)" , "rgba(220,120,120,.8)", "rgba(20,120,220,.8)" ], "borderDash": [ [5,10], [0,0] ] }, 
+					bar: { backgroundColor: [ "rgba(20,220,220,.8)" , "rgba(220,120,120,.8)", "rgba(20,120,220,.8)" ]}, 
+					pie: { backgroundColor: [ ["rgba(0,0,0,.8)" , "rgba(220,20,20,.8)", "rgba(20,220,20,.8)", "rgba(220,220,20,.8)", "rgba(20,20,220,.8)"] ]},
+					radar: { borderColor: [ "rgba(20,220,220,.8)" , "rgba(220,120,120,.8)", "rgba(20,120,220,.8)" ]}, 
+			},
+			math: {
+//              mathjax: 'js/MathJax.js',
+              "fast-preview": {disabled:true},
+              tex2jax: {
+                preview: "none",
+                inlineMath: [["$","$"],["\\(","\\)"]]
+              },
+				mathjax: 'https://cdn.jsdelivr.net/gh/mathjax/mathjax@2.7.8/MathJax.js',
+				config: 'TeX-AMS_HTML-full',
+				// pass other options into `MathJax.Hub.Config()`
+				TeX: { Macros: { RR: "{\\bf R}" } }
+				},
+				anything: [ 
+				{
+		className: "plot",
+		defaults: {width:500, height: 500, grid:true},
+		initialize: (function(container, options){ options.target = "#"+container.id; functionPlot(options) })
+	 },
+	 {
+		className: "chart",  
+		initialize: (function(container, options){ container.chart = new Chart(container.getContext("2d"), options);  })
+	 },
+	 {
+		className: "anything",
+		initialize: (function(container, options){ if (options && options.initialize) { options.initialize(container)} })
+	 },
+					],
+			// Learn about plugins: https://revealjs.com/plugins/
+			plugins: (window.location.search.match(/print-pdf/gi) ? printPlugins : plugins ) 
+		});
+			
+
+
+	    // Change chalkboard theme : 
+		function changeTheme(input) {
+			var config = {};
+			config.theme = input.value;
+			Reveal.getPlugin("RevealChalkboard").configure(config);
+			input.blur();
+		}
+
+		// // Handle the message inside the webview
+        // window.addEventListener('message', event => {
+
+        //     const message = event.data; // The JSON data our extension sent
+
+        //     switch (message.command) {
+        //         case 'refactor':
+        //             Reveal.toggleHelp();
+        //     }
+        // });
+
+		if (window.location.search.match(/print-pdf-now/gi)) {
+      		setTimeout(() => {
+				window.print();
+			  }, 2500);
+			
+    }
+</script>
+
+</body>
+
+</html>

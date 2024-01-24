@@ -1,0 +1,97 @@
+/* body:after {
+  content: "Steven Ge \A Itoh Laboratory";
+  white-space: pre-wrap;
+  position: fixed;
+  top: 0.5em;
+  right: 0.5em;
+  font-family: "Lato", sans-serif;
+  font-size: 2em;
+  font-weight: normal;
+  color: #000;
+  }
+   */
+
+#coverpage-topright {
+  white-space: pre-wrap;
+  position: absolute;
+  text-align: center;
+  bottom: 0em;
+  font-family: "Lato", sans-serif;
+  font-size: 1em;
+  font-weight: normal;
+  color: #000;
+}
+
+#logo img {
+    max-height: 10em !important;
+    max-width: none;
+    min-width: 50px;
+}
+
+.reveal p {
+  text-align: left;
+}
+.reveal ul {
+  display: block;
+}
+.reveal ol {
+  display: block;
+}
+
+.reveal section img { 
+  background:none; 
+  border:none; 
+  box-shadow:none; 
+}
+
+.reveal .slides {
+    width: 70% !important;
+    margin-top: 2.5%;
+}
+
+.reveal .slide-number {
+  font-size: 1em;            
+  right: 46%;
+  left: 46%;
+  text-align: center;
+  color: #ffffff; }
+
+.reveal table, tr, td {
+  border: none !important;
+}
+
+mark {
+  background-color: yellow;
+  color: black;
+}
+
+/* graph css */
+div .graph {
+  margin-left: 12.5%;
+  border-width: 0.1em;
+  border-style: solid;
+  border-color: transparent;
+  text-align: left;
+  height: 15em;
+  width: 50%;
+}
+
+div {
+  text-align: left;
+}
+
+div .halfheight {
+  height: 7em;
+  /* height: 100% */
+}
+
+div .quarterheight {
+  height: 6em;
+  /* height: 100% */
+}
+
+
+section[data-transition*="none-out"].present, section[data-transition*="none-out"].past {
+  transition-duration: 0s !important; }
+section[data-transition*="none-in"].future, section[data-transition*="none-in"].present {
+  transition-duration: 0s !important; }
